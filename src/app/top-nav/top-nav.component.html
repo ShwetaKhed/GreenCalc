@@ -1,0 +1,41 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>home</mat-icon>
+  </button>
+  <h1 style="margin-top: 20px; margin-left: 30px;">Cloudsnap</h1>
+  <span class="example-spacer"></span>
+ 
+ 
+  <button mat-button routerLink="/uploadimage" routerLinkActive="active">
+    <mat-icon>upload</mat-icon>
+    Upload Image
+  </button>
+
+  <button mat-button routerLink="/searchByTag" routerLinkActive="active">
+    <mat-icon>search</mat-icon>
+    Search Image by Tag
+  </button>
+
+  <button mat-button routerLink="/getTag" routerLinkActive="active">
+    <mat-icon>compare_arrows</mat-icon>
+    Get Images by Tags 
+  </button>
+
+  <button mat-button routerLink="/add_remove" routerLinkActive="active">
+    <mat-icon>add</mat-icon>
+    Add/Remove Tags 
+  </button>
+
+  <button mat-button routerLink="/deleteImage" routerLinkActive="active">
+    <mat-icon>delete</mat-icon>
+    Delete Image 
+  </button>
+
+ 
+
+  <button mat-button routerLink="/signout" routerLinkActive="active">
+    <mat-icon>logout</mat-icon>
+    Signout
+  </button>
+ 
+</mat-toolbar>

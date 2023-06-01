@@ -1,0 +1,7 @@
+{
+    "/api/*": {
+        "target": "https://cjrypv6i14.execute-api.us-east-1.amazonaws.com/v1/imagesavecloudsnap",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}
