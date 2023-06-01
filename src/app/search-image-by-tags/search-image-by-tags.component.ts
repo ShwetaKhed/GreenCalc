@@ -26,16 +26,51 @@ export class SearchImageByTagsComponent {
            });
   }
 
+  constructURL(baseURL: string, params: any): string {
+    let url = new URL(baseURL);
+
+    let httpParams = new HttpParams();
+    for (const key in params) {
+      if (params.hasOwnProperty(key)) {
+        httpParams = httpParams.set(key, params[key]);
+      }
+    }
+
+    url.search = httpParams.toString();
+    return url.toString();
+  }
+
   onClickSubmit(data:any) {
     this.result = "";
-    console.log(data.tag1);
-    console.log(data.count1)
-    console.log( data.tag1 == undefined || data.count1 == undefined)
     if ( data.tag1 == undefined || data.count1 == undefined){
       alert("Please enter")
       return
     }
-    if (this.isHidden)
+    console.log(data)
+    var length = 0
+    const keys = Object.keys(data);
+    const tagLength = keys.filter(key => key.startsWith('tag') && data[key] !== '').length;
+    const countLength = keys.filter(key => key.startsWith('count') && data[key] !== '').length;
+
+    if (tagLength == countLength){
+      length = tagLength
+    } else {
+      length = tagLength - 1
+    }
+    console.log(length)
+    const baseURL = 'https://zrmhhypvvg.execute-api.us-east-1.amazonaws.com/initial/search1';
+
+
+
+
+
+    const constructedURL = this.constructURL(baseURL, data);
+
+    this.http.get(constructedURL).subscribe((data) => {
+      // Handle response data
+    });
+
+   /* if (this.isHidden)
     {
       alert("sdhfbs")
       var url = "https://zrmhhypvvg.execute-api.us-east-1.amazonaws.com/initial/search1?tag1="+ data.tag1 + "&tag2=" +"1"
@@ -57,9 +92,10 @@ export class SearchImageByTagsComponent {
                 else{
                   alert("No image found try again");
                 }
-           });
+           });*/
 
  }
+
 
  viewImage(){
  /* console.log(this.result[0])

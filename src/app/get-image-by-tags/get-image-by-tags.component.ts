@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-get-image-by-tags',
@@ -6,32 +7,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./get-image-by-tags.component.css']
 })
 export class GetImageByTagsComponent {
+  constructor(private http: HttpClient) { }
 
-  processFile(imageInput: any) {
+  processFile1(imageInput: any) {
+    const formData = new FormData();
     const file: File = imageInput.files[0];
-    console.log(file.name)
-    /*if (file) {
+    const postData = new FormData();
+    postData.append("image", file);
+    this.http.post<any>(
+      "http://localhost:3000/api/uploadImageforTags",
+      postData
+    )
+    .subscribe(responseData => {
+      console.log(responseData);
+    });
 
-      this.fileName = file.name; 
-
-      const formData = new FormData();
-      const data = { "name" : "Mike" };
-
-      formData.append("thumbnail",  file);
-      let map = new Map<string, string>();
-      map.set("PO1", "closed"); 
-      //formData.append(map)
-      
-      
-      //let headers = new HttpHeaders();
-      //headers = headers.set('Content-Type', 'application/json');
-      var headers = new HttpHeaders();
-      headers.append('Content-type','application/octet-stream');
-      //headers.append('Access-Control-Allow-Origin' ,'*');
-     //,{headers:headers}
-      const upload$ = this.http.post("https://35muxyda49.execute-api.us-east-1.amazonaws.com/dev",formData,{headers:headers});
-
-      upload$.subscribe();*/
   }
 
 }

@@ -40,13 +40,10 @@ app.post('/api/upload',
       posts: posts
     });
     const filePath = path.join(__dirname, 'uploads', uploadedFileName)
-
-
     const imageData = fs.readFileSync(filePath);
-    // Make the PUT request
    axios.put('https://674az2l721.execute-api.us-east-1.amazonaws.com/v1/imageupload1/'+ uploadedFileName , imageData, {
   headers: {
-    'Content-Type': 'image/jpeg' // Replace with the appropriate content type of your image
+    'Content-Type': 'image/jpeg'
   }
 })
   .then(response => {
@@ -58,7 +55,34 @@ app.post('/api/upload',
 
 });
 
+app.post('/api/uploadImageforTags',
+  multer({ storage: storage }).single("image"),
+  (req, res, next) => {
+    const posts = [
+      {
+        success : "True"
+      }
+    ]
 
+    const filePath = path.join(__dirname, 'uploads', uploadedFileName)
+    const imageData = fs.readFileSync(filePath);
+    const base64Image = imageData.toString('base64');
+    const jsonData = JSON.stringify({
+      contents: base64Image
+    });
+
+    axios.post('https://41pjl66n98.execute-api.us-east-1.amazonaws.com/production_search/search_by_image/', jsonData)
+    .then(response => {
+      console.log('Response:', response.data);
+      res.status(200).json({
+        message: response.data,
+        posts: posts
+      });
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+});
 
 app.use('/api/uploadfile' ,(req,resp,next) => {
   const posts = [
