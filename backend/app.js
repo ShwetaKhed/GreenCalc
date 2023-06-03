@@ -6,6 +6,7 @@ const path = require('path');
 const axios = require('axios');
 const fs = require('fs');
 const bodyParser = require('body-parser');
+const http = require('http');
 
 var uploadedFileName = "";
 
@@ -105,9 +106,15 @@ app.post('/api/searchTag', (req, res) => {
 
 app.post('/api/deleteImage', (req, res) => {
   const jsonData = req.body;
-  console.log(jsonData);
+  console.log(req.headers['authorization']);
+  
+  axios.post('https://ze7rwcqgj5.execute-api.us-east-1.amazonaws.com/v1', jsonData, {
 
-  axios.post('https://ze7rwcqgj5.execute-api.us-east-1.amazonaws.com/v1', jsonData)
+    headers: {
+      'Authorization': req.headers['authorization']
+    }
+  })
+
   .then(response => {
     console.log('Response:', response.data);
     res.status(200).json({
