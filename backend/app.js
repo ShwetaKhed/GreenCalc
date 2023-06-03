@@ -5,6 +5,7 @@ const router = express.Router();
 const path = require('path');
 const axios = require('axios');
 const fs = require('fs');
+const bodyParser = require('body-parser');
 
 var uploadedFileName = "";
 
@@ -16,7 +17,7 @@ const storage = multer.diskStorage({
   }
 });
 
-
+app.use(bodyParser.json());
 app.use((req, res, next) =>{
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Headers", "*");
@@ -84,15 +85,37 @@ app.post('/api/uploadImageforTags',
     });
 });
 
-app.use('/api/uploadfile' ,(req,resp,next) => {
-  const posts = [
-    {
-      success : "True"
-    }
-  ]
-   resp.status(200).json({
-    message: "Upload success",
-    posts: posts
+
+
+app.post('/api/searchTag', (req, res) => {
+  const jsonData = req.body;
+  console.log(jsonData);
+
+  axios.post('https://er1qgoymp1.execute-api.us-east-1.amazonaws.com/v1/multiple_tags', jsonData)
+  .then(response => {
+    console.log('Response:', response.data);
+    res.status(200).json({
+      message: response.data
+    });
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+});
+
+app.post('/api/deleteImage', (req, res) => {
+  const jsonData = req.body;
+  console.log(jsonData);
+
+  axios.post('https://ze7rwcqgj5.execute-api.us-east-1.amazonaws.com/v1', jsonData)
+  .then(response => {
+    console.log('Response:', response.data);
+    res.status(200).json({
+      message: "Image Deleted Successfully."
+    });
+  })
+  .catch(error => {
+    console.error('Error:', error);
   });
 });
 

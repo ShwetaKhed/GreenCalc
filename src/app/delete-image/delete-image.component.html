@@ -22,31 +22,26 @@
 
   <div class="bg-text" style="width: 500px;">
            <mat-card>
-           <div style="height: 40px;">
-            <h3>Enter url of image </h3>
-            </div>
-            <form #userlogin = "ngForm">
-                
-                <mat-form-field class="example-full-width">
-                    <mat-label>url</mat-label>
-                    <input matInput  value="">
-                  </mat-form-field>
-                  <br>
-                  <a mat-raised-button color="primary" > Delete Image</a>
-                  <br>
-                  &nbsp;
-   
-                
-                
-             </form>
-         
-          </mat-card>        
+            <form #userlogin = "ngForm" (ngSubmit) = "onClickSubmit(userlogin.value)" >
+              <br/>
+              <div class="input-group">
+                  <input type="text"  class="form-control"  style="margin-left: 10px;margin-right: 20px;" aria-label="With textarea" name = "url" placeholder = "Enter url" ngModel/>
+                    </div>
+                <br/>
+
+               <input type = "submit" style="margin-bottom: 20px; margin-right: 10px;"  class="btn btn-primary"  mat-raised-button color="primary" value ="Delete Image" >
+
+           </form>
+          </mat-card>
   </div>
 
-  
 
-  
- 
-  
+
+
+
+
+
+
+
 
 

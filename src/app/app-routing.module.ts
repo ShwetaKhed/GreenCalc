@@ -9,6 +9,7 @@ import { GetImageByTagsComponent } from './get-image-by-tags/get-image-by-tags.c
 import { DeleteImageComponent } from './delete-image/delete-image.component';
 import { AddRemoveTagComponent } from './add-remove-tag/add-remove-tag.component';
 
+
 const routes: Routes = [
 { path: '', component: SignupComponent },
 { path: 'home', component: HomeComponent },
@@ -25,7 +26,7 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
-})  
+})
 
 
 export class AppRoutingModule { }

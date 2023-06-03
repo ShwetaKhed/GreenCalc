@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { AddRemoveTagComponent } from './add-remove-tag/add-remove-tag.component';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 @NgModule({
@@ -35,8 +37,8 @@ import { AddRemoveTagComponent } from './add-remove-tag/add-remove-tag.component
     DeleteImageComponent,
     TopNavComponent,
     FooterComponent,
-    AddRemoveTagComponent,
-    
+    AddRemoveTagComponent
+
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,9 @@ import { AddRemoveTagComponent } from './add-remove-tag/add-remove-tag.component
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]
