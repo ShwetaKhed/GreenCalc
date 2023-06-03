@@ -119,4 +119,20 @@ app.post('/api/deleteImage', (req, res) => {
   });
 });
 
+app.post('/api/updateTags', (req, res) => {
+  const jsonData = req.body;
+  console.log(jsonData);
+
+  axios.post('https://zabv4z6ucf.execute-api.us-east-1.amazonaws.com/v1/updatee_tags', jsonData)
+  .then(response => {
+    console.log('Response:', response.data);
+    res.status(200).json({
+      message: "Tags Updated Successfully."
+    });
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+});
+
 module.exports = app;

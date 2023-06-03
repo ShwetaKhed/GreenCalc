@@ -55,7 +55,6 @@ searchImage(){
   }
   else
   {
-    const postData = new FormData();
     const convertedData = {
       "tags": this.tagForm.value.tagData.map((item: { tag: any; count: string; }) => ({
         "tag": item.tag,
@@ -63,7 +62,6 @@ searchImage(){
       }))
     };
     console.log(convertedData);
-    postData.append = this.tagForm.value.tagData;
       this.http.post<any>(
         "http://localhost:3000/api/searchTag",
         convertedData

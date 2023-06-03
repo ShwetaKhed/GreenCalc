@@ -8,10 +8,12 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./add-remove-tag.component.css']
 })
 export class AddRemoveTagComponent implements OnInit{
-  result: any
+  result: any;
+  selectedValue: any;
   tagForm!: FormGroup;
   tagData!: FormArray;
   controls!: FormArray;
+
   constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
   ngOnInit() {
     this.tagForm = new FormGroup({
@@ -42,34 +44,39 @@ get getFormControls() {
   return control;
 }
 
-searchImage(){
+changeTags(){
   let tags = this.tagForm.value.tagData;
-  if (tags.length == 1)
+  console.log(tags)
+  console.log(this.result);
+  console.log(this.selectedValue);
+  let type = "0";
+  if (this.selectedValue == 1){
+    type = "1";
+  } else if (this.selectedValue == 2)
   {
-    const searchtag$ = this.http.get("https://zrmhhypvvg.execute-api.us-east-1.amazonaws.com/initial/search1?tag1=" + this.tagForm.value.tagData[0].tag + "&tag2=" + this.tagForm.value.tagData[0].count);
-    searchtag$.subscribe(res => {
-                this.result = res;
-
-           });
+    type = "0";
   }
-  else
-  {
-    const postData = new FormData();
-    const convertedData = {
-      "tags": this.tagForm.value.tagData.map((item: { tag: any; count: string; }) => ({
-        "tag": item.tag,
-        "count": parseInt(item.count)
-      }))
-    };
-    console.log(convertedData);
-    postData.append = this.tagForm.value.tagData;
-      this.http.post<any>(
-        "http://localhost:3000/api/searchTag",
-        convertedData
-      )
-      .subscribe(responseData => {
-        console.log(responseData);
-      });
-  }
+  const convertedData = {
+    "tags": this.tagForm.value.tagData.map((item: { tag: any; count: string; }) => ({
+      "tag": item.tag,
+      "count": parseInt(item.count)
+    }))
+  };
+  const json =  {
+    "url": this.result,
+    "type": type,
+    "tags": this.tagForm.value.tagData.map((item: { tag: any; count: string; }) => ({
+      "tag": item.tag,
+      "count": parseInt(item.count)
+    }))
+}
+console.log(json)
+  this.http.post<any>(
+    "http://localhost:3000/api/updateTags",
+    json
+  )
+  .subscribe(responseData => {
+    console.log(responseData);
+  });
 }
 }
