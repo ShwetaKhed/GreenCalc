@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { TokenService } from 'src/app/TokenService';
+import { HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-remove-tag',
@@ -9,17 +12,26 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 })
 export class AddRemoveTagComponent implements OnInit{
   result: any;
+  token: any;
   selectedValue: any;
   tagForm!: FormGroup;
   tagData!: FormArray;
   controls!: FormArray;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
+  constructor(private formBuilder: FormBuilder, private http: HttpClient,
+    private tokenService: TokenService, private router: Router) { }
   ngOnInit() {
+    this.token = this.tokenService.getIdToken();
+    if (this.token) {
     this.tagForm = new FormGroup({
       tagData:new FormArray([])
     });
     this.addTag();
+    }
+    else {
+      console.log("not logged in");
+      this.router.navigate(['/']);
+    }
  }
  ngAfterOnInit() {
   this.controls = this.tagForm.get('tableRows') as FormArray;
@@ -46,9 +58,6 @@ get getFormControls() {
 
 changeTags(){
   let tags = this.tagForm.value.tagData;
-  console.log(tags)
-  console.log(this.result);
-  console.log(this.selectedValue);
   let type = "0";
   if (this.selectedValue == 1){
     type = "1";
@@ -70,10 +79,10 @@ changeTags(){
       "count": parseInt(item.count)
     }))
 }
-console.log(json)
+const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
   this.http.post<any>(
     "http://localhost:3000/api/updateTags",
-    json
+    json, { headers }
   )
   .subscribe(responseData => {
     console.log(responseData);

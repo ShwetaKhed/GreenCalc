@@ -10,6 +10,7 @@ const http = require('http');
 
 var uploadedFileName = "";
 
+// To store images in upload folders
 const storage = multer.diskStorage({
   destination: __dirname + '/uploads/',
   filename: function (req, file, cb) {
@@ -18,7 +19,9 @@ const storage = multer.diskStorage({
   }
 });
 
+// body parsing json
 app.use(bodyParser.json());
+// sending cors to browser
 app.use((req, res, next) =>{
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Headers", "*");
@@ -28,7 +31,7 @@ app.use((req, res, next) =>{
 
 const upload = multer({ storage: storage });
 
-
+// upload files
 app.post('/api/upload',
   multer({ storage: storage }).single("image"),
   (req, res, next) => {
@@ -44,10 +47,11 @@ app.post('/api/upload',
     const filePath = path.join(__dirname, 'uploads', uploadedFileName)
     const imageData = fs.readFileSync(filePath);
    axios.put('https://674az2l721.execute-api.us-east-1.amazonaws.com/v1/imageupload1/'+ uploadedFileName , imageData, {
-  headers: {
-    'Content-Type': 'image/jpeg'
-  }
-})
+    headers: {
+    'Content-Type': 'image/jpeg',
+    'Authorization': req.headers['authorization']
+    }
+  })
   .then(response => {
     console.log('Response:', response.data);
   })
@@ -57,6 +61,7 @@ app.post('/api/upload',
 
 });
 
+// upload image to search by tags
 app.post('/api/uploadImageforTags',
   multer({ storage: storage }).single("image"),
   (req, res, next) => {
@@ -73,7 +78,12 @@ app.post('/api/uploadImageforTags',
       contents: base64Image
     });
 
-    axios.post('https://41pjl66n98.execute-api.us-east-1.amazonaws.com/production_search/search_by_image/', jsonData)
+    axios.post('https://41pjl66n98.execute-api.us-east-1.amazonaws.com/production_search/search_by_image/', jsonData,
+    {
+      headers: {
+      'Authorization': req.headers['authorization']
+      }
+    })
     .then(response => {
       console.log('Response:', response.data);
       res.status(200).json({
@@ -87,12 +97,15 @@ app.post('/api/uploadImageforTags',
 });
 
 
-
+// search images by tags
 app.post('/api/searchTag', (req, res) => {
   const jsonData = req.body;
-  console.log(jsonData);
-
-  axios.post('https://er1qgoymp1.execute-api.us-east-1.amazonaws.com/v1/multiple_tags', jsonData)
+  axios.post('https://er1qgoymp1.execute-api.us-east-1.amazonaws.com/v1/multiple_tags', jsonData,
+  {
+    headers: {
+      'Authorization': req.headers['authorization']
+    }
+  })
   .then(response => {
     console.log('Response:', response.data);
     res.status(200).json({
@@ -104,12 +117,10 @@ app.post('/api/searchTag', (req, res) => {
   });
 });
 
+// delete images
 app.post('/api/deleteImage', (req, res) => {
   const jsonData = req.body;
-  console.log(req.headers['authorization']);
-  
   axios.post('https://ze7rwcqgj5.execute-api.us-east-1.amazonaws.com/v1', jsonData, {
-
     headers: {
       'Authorization': req.headers['authorization']
     }
@@ -126,11 +137,16 @@ app.post('/api/deleteImage', (req, res) => {
   });
 });
 
+// update tags
 app.post('/api/updateTags', (req, res) => {
   const jsonData = req.body;
-  console.log(jsonData);
-
-  axios.post('https://zabv4z6ucf.execute-api.us-east-1.amazonaws.com/v1/updatee_tags', jsonData)
+  console.log(req.headers['authorization']);
+  axios.post('https://zabv4z6ucf.execute-api.us-east-1.amazonaws.com/v1/updatee_tags', jsonData,
+  {
+    headers: {
+      'Authorization': req.headers['authorization']
+    }
+  })
   .then(response => {
     console.log('Response:', response.data);
     res.status(200).json({

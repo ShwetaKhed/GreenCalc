@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { OnInit } from '@angular/core';
 import { TokenService } from 'src/app/TokenService';
-import { Injectable } from '@angular/core';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,17 +9,17 @@ import { Injectable } from '@angular/core';
 })
 
 export class HomeComponent {
-
-  constructor(private tokenService: TokenService) { }
-
+  constructor(private tokenService: TokenService, private router: Router) { }
   ngOnInit() {
     const token = this.extractTokenFromUrl();
     if (token) {
       console.log(token);
-      
+    }
+    else {
+      console.log("not logged in");
+      this.router.navigate(['/']);
     }
   }
-  
 
   extractTokenFromUrl(): string | null {
 
@@ -46,15 +44,15 @@ export class HomeComponent {
     }
     this.tokenService.setIdToken(idToken);
     this.tokenService.setAccessToken(accessToken);
-  
-   
+
+
     //console.log("access_token =")
     //console.log(accessToken)
     //console.log("id_token =")
     //console.log(idToken)
-   
+
     return idToken;
   }
 
- 
+
 }
