@@ -26,8 +26,9 @@
     text-align: center;
   }
 
-  /*.btn-primary {
-    background-color: #4c00ff;
-    border-color: #7700ff;
-    color: #ffffff;
-  }*/
+  .custom-input-url {
+    border: 2px solid #ccc;
+    padding: 5px;
+    font-size: 16px;
+    width: 400px;
+  }

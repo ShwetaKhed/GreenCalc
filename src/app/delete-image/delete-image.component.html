@@ -5,12 +5,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-
-</head>
 <body>
 
   <div class="bg-img">
@@ -19,16 +13,15 @@
 
   <div class="bg-text" style="width: 500px;">
            <mat-card>
-            <form #userlogin = "ngForm" (ngSubmit) = "onClickSubmit(userlogin.value)" >
+            <form #userlogin = "ngForm" >
               <br/>
               <div class="input-group">
-                  <input type="text"  class="form-control"  style="margin-left: 10px;margin-right: 20px;" aria-label="With textarea" name = "url" placeholder = "Enter url" ngModel/>
+                  <input class="custom-input-url" matInput  name = "url"   placeholder = "Enter Url" [(ngModel)]="url"><br>
                     </div>
                 <br/>
-
-               <input type = "submit" style="margin-bottom: 20px; margin-right: 10px;"  class="btn btn-primary"  value ="Delete Image" >
-
-           </form>
+               <button mat-raised-button color="primary" (click)="deleteImage()">Delete Image</button>
+          <br/>&nbsp;
+              </form>
           </mat-card>
   </div>
 

@@ -13,7 +13,7 @@ export class HomeComponent {
   ngOnInit() {
     const token = this.extractTokenFromUrl();
     if (token) {
-      console.log(token);
+      //console.log(token);
     }
     else {
       console.log("not logged in");

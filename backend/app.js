@@ -14,6 +14,8 @@ var uploadedFileName = "";
 const storage = multer.diskStorage({
   destination: __dirname + '/uploads/',
   filename: function (req, file, cb) {
+    const now = new Date();
+    const timestamp = now.toISOString().slice(0, -5);
     uploadedFileName = file.originalname;
     cb(null, file.originalname);
   }
@@ -70,7 +72,6 @@ app.post('/api/uploadImageforTags',
         success : "True"
       }
     ]
-
     const filePath = path.join(__dirname, 'uploads', uploadedFileName)
     const imageData = fs.readFileSync(filePath);
     const base64Image = imageData.toString('base64');
@@ -87,8 +88,7 @@ app.post('/api/uploadImageforTags',
     .then(response => {
       console.log('Response:', response.data);
       res.status(200).json({
-        message: response.data,
-        posts: posts
+        data: response.data
       });
     })
     .catch(error => {
@@ -120,16 +120,16 @@ app.post('/api/searchTag', (req, res) => {
 // delete images
 app.post('/api/deleteImage', (req, res) => {
   const jsonData = req.body;
-  axios.post('https://ze7rwcqgj5.execute-api.us-east-1.amazonaws.com/v1', jsonData, {
+
+  axios.post('https://kza0qvy3sf.execute-api.us-east-1.amazonaws.com/v1/delete', jsonData, {
     headers: {
       'Authorization': req.headers['authorization']
     }
   })
-
   .then(response => {
     console.log('Response:', response.data);
     res.status(200).json({
-      message: "Image Deleted Successfully."
+      message: response.data.message
     });
   })
   .catch(error => {
@@ -140,6 +140,7 @@ app.post('/api/deleteImage', (req, res) => {
 // update tags
 app.post('/api/updateTags', (req, res) => {
   const jsonData = req.body;
+  console.log(jsonData);
   console.log(req.headers['authorization']);
   axios.post('https://zabv4z6ucf.execute-api.us-east-1.amazonaws.com/v1/updatee_tags', jsonData,
   {
@@ -150,11 +151,13 @@ app.post('/api/updateTags', (req, res) => {
   .then(response => {
     console.log('Response:', response.data);
     res.status(200).json({
-      message: "Tags Updated Successfully."
+      data: response.data
     });
   })
   .catch(error => {
-    console.error('Error:', error);
+    res.status(200).json({
+      data: "URL not found in the database."
+    });
   });
 });
 

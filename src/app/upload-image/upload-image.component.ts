@@ -16,10 +16,9 @@ export class UploadImageComponent {
   ngOnInit() {
     this.token = this.tokenService.getIdToken();
     if (this.token) {
-      console.log(this.token);
+      //console.log(this.token);
     }
     else {
-      console.log("not logged in");
       this.router.navigate(['/']);
     }
     }
@@ -34,6 +33,7 @@ export class UploadImageComponent {
         postData, { headers }
       )
       .subscribe(responseData => {
+        alert("Image Uploaded Successfully !!!");
         console.log(responseData);
       });
     }

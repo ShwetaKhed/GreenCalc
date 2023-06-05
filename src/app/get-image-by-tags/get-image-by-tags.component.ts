@@ -11,12 +11,17 @@ import { Router } from '@angular/router';
 })
 export class GetImageByTagsComponent {
   token :any;
+  buttonDisabled : boolean = true;
+  imagedivHidden: boolean = true;
+  imageUrls: string[] = [
+  ];
+  divHidden: boolean = false;
   constructor(private http: HttpClient, private tokenService: TokenService,
     private router: Router ) { }
   ngOnInit() {
       this.token = this.tokenService.getIdToken();
       if (this.token) {
-        console.log(this.token);
+        //console.log(this.token);
       }
       else {
         console.log("not logged in");
@@ -24,7 +29,6 @@ export class GetImageByTagsComponent {
       }
       }
   processFile1(imageInput: any) {
-    const formData = new FormData();
     const file: File = imageInput.files[0];
     const postData = new FormData();
     postData.append("image", file);
@@ -34,9 +38,23 @@ export class GetImageByTagsComponent {
       postData, {headers}
     )
     .subscribe(responseData => {
-      console.log(responseData);
+      console.log(responseData.data);
+      if (responseData.data.length > 0){
+        this.imageUrls = responseData.data
+        this.buttonDisabled = false;
+      }
     });
 
+  }
+  viewImage(){
+    this.imagedivHidden = false;
+    this.divHidden = true;
+  }
+
+  closeImage()
+  {
+    this.imagedivHidden = true;
+    this.divHidden = false;
   }
 
 }

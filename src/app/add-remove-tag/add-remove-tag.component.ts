@@ -65,18 +65,23 @@ changeTags(){
   {
     type = "0";
   }
-  const convertedData = {
-    "tags": this.tagForm.value.tagData.map((item: { tag: any; count: string; }) => ({
-      "tag": item.tag,
-      "count": parseInt(item.count)
-    }))
-  };
+  if (this.result == "")
+  {
+    alert("Enter Url");
+  }
+  for (let i = 0; i < tags.length; i++){
+    if (tags[i].tag == ""){
+      alert("Enter Tag");
+      return;
+    }
+  }
+
   const json =  {
     "url": this.result,
     "type": type,
     "tags": this.tagForm.value.tagData.map((item: { tag: any; count: string; }) => ({
       "tag": item.tag,
-      "count": parseInt(item.count)
+      "count": item.count !== null && item.count !== '' ? parseInt(item.count) : 1
     }))
 }
 const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
@@ -85,7 +90,7 @@ const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
     json, { headers }
   )
   .subscribe(responseData => {
-    console.log(responseData);
+    alert(responseData.data);
   });
 }
 }

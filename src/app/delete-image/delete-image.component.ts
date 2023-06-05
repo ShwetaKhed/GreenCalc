@@ -11,32 +11,35 @@ import { Router } from '@angular/router';
 })
 
 export class DeleteImageComponent {
+  url: any;
   constructor(private http: HttpClient,
     private tokenService: TokenService, private router: Router ) { }
 
   ngOnInit() {
     const token = this.tokenService.getIdToken();
     if (token) {
-      console.log(token);
+      //console.log(token);
     }
     else {
       console.log("not logged in");
       this.router.navigate(['/']);
     }
     }
-  onClickSubmit(data: any) {
+    deleteImage() {
     const token = this.tokenService.getIdToken();
-    console.log("token in delete : " + token);
-
-    // Set the authorization header with the token
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    console.log(data);
+    console.log(this.url);
+    const json = {
+      "url" : this.url
+    }
+
     this.http.post<any>(
         "http://localhost:3000/api/deleteImage",
-      data, { headers }
+        json, { headers }
       )
       .subscribe(responseData => {
         console.log(responseData);
+        alert(responseData.message)
       });
   }
 

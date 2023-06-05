@@ -14,12 +14,10 @@ export class TokenService {
   }
 
   setIdToken(token: string) {
-    console.log("token set properlty " + token);
     this.idToken = token;
   }
 
   getIdToken(): string | null {
-    console.log("get  token   " + this.idToken);
     return this.idToken;
   }
 

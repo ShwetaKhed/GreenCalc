@@ -5,11 +5,7 @@
 <div class="bg-text" style="width: 500px;">
   <mat-card>
     <mat-card-content>
-      <mat-form-field  style = "width: 400px">
-        <mat-label>Enter url</mat-label>
-        <input matInput  name = "result"   placeholder = "" [(ngModel)]="result">
-      </mat-form-field>
-
+        <input class="custom-input-url" matInput  name = "result"   placeholder = "Enter Url" [(ngModel)]="result"><br>
     <mat-radio-group aria-label="Select an option" [(ngModel)]="selectedValue">
         <mat-radio-button value="1">Add Tags</mat-radio-button>
         <mat-radio-button value="2">Delete Tags</mat-radio-button>
