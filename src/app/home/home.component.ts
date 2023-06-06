@@ -12,6 +12,7 @@ export class HomeComponent {
   constructor(private tokenService: TokenService, private router: Router) { }
   ngOnInit() {
     const token = this.extractTokenFromUrl();
+    console.log(token)
     if (token) {
       //console.log(token);
     }
@@ -44,13 +45,6 @@ export class HomeComponent {
     }
     this.tokenService.setIdToken(idToken);
     this.tokenService.setAccessToken(accessToken);
-
-
-    //console.log("access_token =")
-    //console.log(accessToken)
-    //console.log("id_token =")
-    //console.log(idToken)
-
     return idToken;
   }
 

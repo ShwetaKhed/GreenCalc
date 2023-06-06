@@ -5,7 +5,6 @@ import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
-import { SignoutComponent } from './signout/signout.component';
 import { HomeComponent } from './home/home.component';
 import { UploadImageComponent } from './upload-image/upload-image.component';
 import { GetImageByTagsComponent } from './get-image-by-tags/get-image-by-tags.component';
@@ -29,7 +28,6 @@ import {MatRadioModule} from '@angular/material/radio';
   declarations: [
     AppComponent,
     SignupComponent,
-    SignoutComponent,
     HomeComponent,
     UploadImageComponent,
     GetImageByTagsComponent,
