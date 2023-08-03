@@ -16,6 +16,8 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import {MatRadioModule} from '@angular/material/radio';
+import { CalculatorComponent } from './calculator/calculator.component';
+import { SolutionsComponent } from './solutions/solutions.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import {MatRadioModule} from '@angular/material/radio';
     HomeComponent,
     NavBarComponent,
     FooterComponent,
+    CalculatorComponent,
+    SolutionsComponent,
 
   ],
   imports: [

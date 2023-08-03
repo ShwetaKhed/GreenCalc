@@ -3,12 +3,8 @@
 }
 
 .mat-toolbar.mat-primary {
-  background: #b8bdb4;
+  background: #fcfcfc;
   color: #070707;
   height: 40px;
 }
 
-.mat-raised-button {
-  color: #070707;
-  height: 40px;
-}
