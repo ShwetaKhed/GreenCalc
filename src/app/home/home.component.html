@@ -12,64 +12,44 @@
 <body>
 
 
-<app-top-nav></app-top-nav>
-
-<div class="container" style="margin-top:30px">
-  <div class="row">
-    <div class="col-sm-4">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>Features</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p>Authentication and Authorisation</p>
-          <p>Image Upload</p>
-          <p>Search Image by Tag</p>
-          <p>Get Images by Tag</p>
-          <p>Add/Remove Tags</p>
-          <p>Delete Image</p>
-        </mat-card-content>
-
-      </mat-card>
-
-      <br/>
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>Team Members</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <p>Nisha Devi</p>
-          <p>Shweta Anup Khedkar</p>
-          <p>Sohan Jagadeesh</p>
-          <p>Pranav Bijapur</p>
-
-        </mat-card-content>
-
-      </mat-card>
-    </div>
-    <div class="col-sm-8">
-      <div class="container">
-        <img style="height: 250px; margin-left: 50px;"  src="/assets/images/object_detection.jpg"/>
+<nav-bar></nav-bar>
+<div class="container">
+  <div class="custom-div"></div>
+  <div style="width: 50px;"></div>
+  <div style="margin-top: 15px;"><h2 >Today's eco-conscious choices shape tomorrow's world.</h2>
+    <div class="container" style="margin-top:10px">
+      <div class="col-sm-6">
+        <mat-card>
+          <mat-card-content>
+            <div class="div2-image">
+              <h3 style="color: aliceblue;">&nbsp;&nbsp;Calculate Carbon Footprint</h3>
+              <mat-card-actions >
+                <a style="margin-top: 125px;  background-color: #171614;
+                color: #fefefe; " mat-raised-button  > Calculate Now</a>
+              </mat-card-actions>
+            </div>
+          </mat-card-content>
+          </mat-card>
+        </div>
+      <div class="col-sm-6">
+        <mat-card>
+          <mat-card-content>
+            <div class="div2-image">
+              <h3 style="color: aliceblue;">&nbsp;&nbsp;Solutions</h3>
+              <mat-card-actions >
+                <a style="margin-top: 125px;  background-color: #171614;
+                color: #fefefe; " mat-raised-button  > Solutions</a>
+              </mat-card-actions>
+            </div>
+          </mat-card-content>
+          </mat-card>
       </div>
-      <h2 style=" margin-left: 200px;"> Description of Assignment</h2>
-
-      <div >
-        <p>Providing AWS Cloud-based solution that exploits services such as S3, Lambda, API
-          Gateway and database service to build a system for automated object-detection tagging
-          and query handling. We have produced a solution that allows end-users to upload their images into
-          an S3 bucket. Upon uploading of an image to a designated S3 bucket, a lambda function is automatically
-          triggered that uses the Yolo object detection feature and finds the list of objects in the image and stores
-          the list of detected objects along with the URL of the image (S3 URL) in a database. Further, the end-user
-          submits queries to an API endpoint using API Gateway to search tagged images</p>
-      </div>
-
-
     </div>
-
-
   </div>
 
 </div>
 
+<app-footer></app-footer>
 </body>
 </html>
+

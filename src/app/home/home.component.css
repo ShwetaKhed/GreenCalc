@@ -1,0 +1,47 @@
+.custom-div {
+  height: 520px;
+  width: 350px;
+  background-image: url("/assets/images/left_leaf_image.jpg");
+  background-size: cover;
+
+}
+
+.div1-image {
+  height: 220px;
+  width: 350px;
+  background-image: url("/assets/images/co2_emissions.jpg");
+  background-size: cover;
+
+}
+
+.div2-image {
+  height: 220px;
+  width: 350px;
+  background-image: url("/assets/images/planting_trees.jpg");
+  background-size: cover;
+
+}
+
+.div3-image {
+  height: 120px;
+  width: 300px;
+  background-image: url("/assets/images/planting_trees.jpg");
+  background-size: cover;
+
+}
+
+th, td {
+  border: 0px solid black;
+  padding: 0px;
+}
+
+.container {
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+}
+
+
+
+
+
