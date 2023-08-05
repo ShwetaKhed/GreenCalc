@@ -1,21 +1,24 @@
-const { getConnection, sql } = require('./db');
+// server.js
 
-async function testConnection() {
-  try {
-    // Establish the database connection
-    await getConnection();
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
-    // Execute a test query to check the connection
-    const result = await sql.query`SELECT 1`;
+const app = express();
+const port = 3000;
 
-    // Log the result
-    console.log(result.recordset[0]['']);
+app.use(bodyParser.json());
+app.use(cors());
 
-    // Close the connection pool (important to release resources)
-    await sql.close();
-  } catch (err) {
-    console.error('Error occurred during the test:', err);
-  }
-}
+// Example API endpoint to send data to the frontend
+app.get('/api/data', (req, res) => {
+  const data = { message: 'Hello from Node.js backend!' };
+  console.log("resturn th")
+  res.json(data);
+});
 
-testConnection();
+// Add more API endpoints as needed for your application
+
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});

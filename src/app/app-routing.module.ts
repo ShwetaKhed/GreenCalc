@@ -9,8 +9,8 @@ import { SolutionsComponent } from './solutions/solutions.component';
 const routes: Routes = [
 
 { path: '', component: HomeComponent },
-{ path: 'calculator', component: CalculatorComponent },
-{ path: 'solutions', component: SolutionsComponent }
+{ path: 'calc', component: CalculatorComponent },
+{ path: 'recommend', component: SolutionsComponent }
 ];
 
 

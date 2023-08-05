@@ -14,33 +14,7 @@ const config = {
     }
 }
 
-/*
-    //Use Azure VM Managed Identity to connect to the SQL database
-    const config = {
-        server: process.env["db_server"],
-        port: process.env["db_port"],
-        database: process.env["db_database"],
-        authentication: {
-            type: 'azure-active-directory-msi-vm'
-        },
-        options: {
-            encrypt: true
-        }
-    }
 
-    //Use Azure App Service Managed Identity to connect to the SQL database
-    const config = {
-        server: process.env["db_server"],
-        port: process.env["db_port"],
-        database: process.env["db_database"],
-        authentication: {
-            type: 'azure-active-directory-msi-app-service'
-        },
-        options: {
-            encrypt: true
-        }
-    }
-*/
 
 console.log("Starting...");
 connectAndQuery();
@@ -50,12 +24,8 @@ async function connectAndQuery() {
         var poolConnection = await sql.connect(config);
 
         console.log("Reading rows from the Table...");
-        const result = await sql.query`SELECT TOP 1 * FROM Test`; // Replace YourTable with the actual table name
-
-    // Log the first row of the result
-    console.log(result.recordset[0]);
-
-        // close connection only when we're certain application is finished
+        const result = await sql.query`SELECT TOP 1 * FROM Test`;
+        console.log(result);
         poolConnection.close();
     } catch (err) {
         console.error(err.message);

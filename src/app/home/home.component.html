@@ -10,59 +10,44 @@
 
 </head>
 <body>
-
-
 <nav-bar></nav-bar>
+
 <div class="container">
-  <div class="custom-div"></div>
-  <div style="width: 50px;"></div>
-  <div style="margin-top: 15px;"><h2 >Today's eco-conscious choices shape tomorrow's world.</h2>
-    <div class="container" style="margin-top:10px">
-      <div class="col-sm-6">
-        <mat-card>
-          <mat-card-content>
-            <div class="div1-image">
-              <h3 style="color: aliceblue;">&nbsp;&nbsp;Calculate Carbon Footprint</h3>
-              <mat-card-actions >
-                <a style="margin-top: 125px;  background-color: #171614;
-                color: #fefefe; " mat-raised-button  > Calculate Now</a>
-              </mat-card-actions>
-            </div>
-          </mat-card-content>
-          </mat-card>
-        </div>
-      <div class="col-sm-6">
-        <mat-card>
-          <mat-card-content>
-            <div class="div2-image">
-              <h3 style="color: aliceblue;">&nbsp;&nbsp;Solutions</h3>
-              <mat-card-actions >
-                <a style="margin-top: 125px;  background-color: #171614;
-                color: #fefefe; " mat-raised-button  > Solutions</a>
-              </mat-card-actions>
-            </div>
-          </mat-card-content>
-          </mat-card>
-      </div>
-    </div>
-    <div style="height: 50px;">
-
-    </div>
-  <div>
-    <h4>
-
-    "We are the architects of our future, and the choices we make today will shape the world of tomorrow.
-    <br>
-    Sustainable practices are not a burden; they are an opportunity to create a brighter, healthier, and more equitable future.
-      <br>
-      Let's harness our collective power to build a world where prosperity is shared, nature thrives, and every individual has the chance to flourish." - Achim Steiner
-  </h4>
+  <div style="margin:40px;width: 62%; height: 450px;">
+    <vg-player>
+      <vg-overlay-play></vg-overlay-play>
+      <vg-buffering></vg-buffering>
+      <vg-scrub-bar>
+          <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+          <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+      </vg-scrub-bar>
+      <vg-controls>
+          <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+          <vg-track-selector></vg-track-selector>
+      </vg-controls>
+      <video [vgMedia]="$any(media)" #media id="singleVideo" preload="auto" crossorigin [autoplay]="true">
+          <source src="/assets/videos/cc_video.mp4" type="video/mp4">
+      </video>
+  </vg-player>
   </div>
-  </div>
+  <div style="margin-top:40px; width: 32%">
+    <h2 >"Small steps toward reducing our carbon footprint can lead to giant leaps for the future of our planet."<br></h2>
+     <h4 style="color: rgb(160, 160, 163);"> How do my energy bills compare?</h4>
+     <mat-icon style="padding: 2px;">calculate</mat-icon> &nbsp;
 
+    <a routerLink="/calc" style=" cursor: pointer; font-weight: bold;
+    color: #096342;">Calculate Carbon Footprint -> </a>
+
+<h2 style="margin-top: 20px;">"Through conscious choices and sustainable actions, we hold the power to shrink our
+  household emissions and pave the way for a cleaner, brighter tomorrow."</h2>
+<h4 style="color: rgb(160, 160, 163);">How to reduce my household emissions?</h4>
+<mat-icon style="padding: 2px;">lightbulb</mat-icon> &nbsp;
+<a routerLink="/recommend" style=" cursor: pointer; font-weight: bold;
+
+color: #096342;">Recommendations -> </a>
+
+  </div>
 </div>
 
-<app-footer></app-footer>
 </body>
 </html>
-

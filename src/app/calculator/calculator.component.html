@@ -1,1 +1,80 @@
-<p>calculator works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+<nav-bar></nav-bar>
+
+<div class="container">
+  <div style="margin:40px;width: 52%; height: 450px;">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Find your Carbon Footprint</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form #genForm="ngForm" autocomplete="off" novalidate fxLayout="column wrap"
+              fxLayoutAlign="center center" fxLayoutGap="10px" class="example-form">
+              <mat-card-content>
+                <mat-form-field>
+                  <mat-label>Select a Suburb</mat-label>
+                  <mat-select required="true">
+                    <mat-option value="one">First option</mat-option>
+                    <mat-option value="two">Second option</mat-option>
+
+                  </mat-select>
+                  <mat-hint>Suburb in Victoria</mat-hint>
+                </mat-form-field> <br><br>
+                <mat-form-field>
+                  <mat-label>Energy Consumption</mat-label>
+                  <input matInput required="true" pattern="^[0-9]*$">
+                  <mat-hint>Energy Consumption in kWH</mat-hint>
+                </mat-form-field> <br><br>
+
+                <mat-form-field>
+                  <mat-label>Gas Consumption</mat-label>
+                  <input matInput required="true" pattern="^[0-9]*$">
+                  <mat-hint>Energy Consumption in kWH</mat-hint>
+                </mat-form-field>
+                <mat-card-actions>
+                  <button mat-button color="primary" (click)="calculate()"
+                                  mat-raised-button>
+                            Calculate Now
+                          </button>
+
+                </mat-card-actions>
+
+              </mat-card-content>
+        </form>
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+  <div style="margin-top:40px; width: 32%">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Features</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>Authentication and Authorisation</p>
+        <p>Image Upload</p>
+        <p>Search Image by Tag</p>
+        <p>Get Images by Tag</p>
+        <p>Add/Remove Tags</p>
+        <p>Delete Image</p>
+      </mat-card-content>
+
+
+    </mat-card>
+
+  </div>
+</div>
+
+</body>
+</html>
