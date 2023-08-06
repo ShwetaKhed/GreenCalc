@@ -23,6 +23,11 @@ import {VgControlsModule} from '@videogular/ngx-videogular/controls';
 import {VgOverlayPlayModule} from '@videogular/ngx-videogular/overlay-play';
 import {VgBufferingModule} from '@videogular/ngx-videogular/buffering';
 import {MatSelectModule} from '@angular/material/select';
+import { ComparisonComponent } from './comparison/comparison.component';
+import { NumbersOnlyDirective } from './numbers-only.directive';
+import { BarChartComponent } from './bar-chart/bar-chart.component';
+import {MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule} from '@angular/material/tree';
+
 
 
 
@@ -34,6 +39,9 @@ import {MatSelectModule} from '@angular/material/select';
     FooterComponent,
     CalculatorComponent,
     SolutionsComponent,
+    ComparisonComponent,
+    NumbersOnlyDirective,
+    BarChartComponent
 
   ],
   imports: [
@@ -55,7 +63,8 @@ import {MatSelectModule} from '@angular/material/select';
     VgControlsModule,
     VgOverlayPlayModule,
     VgBufferingModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTreeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

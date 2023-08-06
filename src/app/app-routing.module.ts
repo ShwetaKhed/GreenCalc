@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {HomeComponent} from './home/home.component'
 import { CalculatorComponent } from './calculator/calculator.component';
 import { SolutionsComponent } from './solutions/solutions.component';
+import { ComparisonComponent } from './comparison/comparison.component';
 
 
 
@@ -10,7 +11,8 @@ const routes: Routes = [
 
 { path: '', component: HomeComponent },
 { path: 'calc', component: CalculatorComponent },
-{ path: 'recommend', component: SolutionsComponent }
+{ path: 'recommend', component: SolutionsComponent },
+{ path: 'compare/:data', component: ComparisonComponent }
 ];
 
 

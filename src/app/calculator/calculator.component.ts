@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { SharedService } from '../shared.service';
+
+
+
 
 
 @Component({
@@ -10,21 +15,40 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class CalculatorComponent {
 
   myForm: FormGroup;
-  formData: any = {};
-
-  constructor(private formBuilder: FormBuilder) {
+  energy: any;
+  gas: any;
+  postcode: any;
+  constructor(private formBuilder: FormBuilder, private router: Router,
+    private sharedService: SharedService) {
     this.myForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      energy: ['', Validators.required],
+      gas: ['', Validators.required],
+      postcode : ['', Validators.required]
     });
+
+  }
+  ngOnInit() {
+    console.log(this.sharedService.sharedData);
+
   }
 
   calculate() {
-    console.log(this.formData)
-    if (this.myForm.valid) {
-      console.log(this.formData.name)
-      // Submit form logic
+    if(this.energy != undefined && this.gas != undefined && this.postcode != undefined)
+    {
+      var elect_cf =  this.energy * 0.5;
+      var gas_cf = this.gas * 2.2;
+      var total = elect_cf + gas_cf
+      this.sharedService.postcode =this.postcode;
+      this.router.navigate(['/compare', total.toFixed(2)]);
     }
 
   }
+
+  openDialog(): void {
+
+
+  }
 }
+
+
+

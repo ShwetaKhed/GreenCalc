@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-home',
@@ -11,16 +11,19 @@ import { HttpHeaders } from '@angular/common/http';
 
 export class HomeComponent {
   private apiUrl = 'http://localhost:3000/api';
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient,
+    private sharedService: SharedService) { }
   ngOnInit() {
 
-      console.log("in here")
-      this.http.get<any>(
-        "http://localhost:3000/api/data"
-      )
-      .subscribe(responseData => {
-       console.log(responseData)
-      });
+    console.log("in here")
+    this.http.get<any>(
+      "http://localhost:3000/api/data"
+    )
+    .subscribe(responseData => {
+     console.log(responseData)
+     this.sharedService.sharedData = responseData
+    });
+
 
   }
 
