@@ -27,6 +27,9 @@ import { ComparisonComponent } from './comparison/comparison.component';
 import { NumbersOnlyDirective } from './numbers-only.directive';
 import { BarChartComponent } from './bar-chart/bar-chart.component';
 import {MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule} from '@angular/material/tree';
+import { RecommendComponent } from './recommend/recommend.component';
+import { LoadscreenComponent } from './loadscreen/loadscreen.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -41,7 +44,9 @@ import {MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule} from '@angular/m
     SolutionsComponent,
     ComparisonComponent,
     NumbersOnlyDirective,
-    BarChartComponent
+    BarChartComponent,
+    RecommendComponent,
+    LoadscreenComponent
 
   ],
   imports: [
@@ -64,7 +69,8 @@ import {MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule} from '@angular/m
     VgOverlayPlayModule,
     VgBufferingModule,
     MatSelectModule,
-    MatTreeModule
+    MatTreeModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

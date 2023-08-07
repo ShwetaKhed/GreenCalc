@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="column">
+      <div style="width: 100px;">&nbsp;</div>
+  </div>
+  <div class="column">
+      <div style="height: 150px;"></div>
+      <div style="height: 50px;"><h1 class="centered-heading blue-heading">GreenCalc</h1></div>
+      <div>
+          <h2 class="centered-heading">
+            A Simple Carbon Footprint Calculator
+          </h2>
+      </div>
+      <div style="height: 150px;">
+          <h3 class="centered-heading">
+            "Your carbon footprint score represents the environmental <br>
+            "Your carbon footprint score represents the environmental impact <br>
+            of your energy consumption per year (based on your average consumption per day). <br>
+            It reflects the carbon emissions <br>
+            associated with your household activities involving electricity and gas use."
+          </h3>
+      </div>
+  </div>
+  <div class="column">
+      <div style="height: 100px;"></div>
+      <div class="container">
+          <img style="margin: 0px 50px 20px 68px;height: 200px;" src="/assets/images/sustain2.png "/>
+          <h4 style = "margin-left: 70px;">**Input you password to continue</h4>
+      </div>
+      <mat-card-actions style="margin: 50px;">
+        <mat-form-field style = "margin-left: 45px;">
+          <mat-label>Login Password</mat-label>
+          <input matInput required="true"  required [(ngModel)]="password" id="password" name="password" >
+          <mat-hint>** Team Name</mat-hint>
+        </mat-form-field> <br>
+        <button style = "margin-left: 125px; margin-top: 20px;" mat-button color="primary" (click)="onLogin()"
+                                  mat-raised-button>
+                           Login Now
+                          </button>
+      </mat-card-actions>
+  </div>
+</div>
+<div style="height: 70px;"></div>

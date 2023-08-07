@@ -20,7 +20,7 @@
     <div style="margin:30px 0px 0px 60px; width: 50%;">
         <mat-card-content>
          <h2 style="margin-top:20px">"Interpreting Your Carbon Footprint Score"</h2>
-          <h1 style="margin-left:120px; color: #649a68;">  {{ carbonFootprint }}</h1>
+          <h1 style="margin-left:60px; color: #649a68;">  {{ carbonFootprint }}</h1>
           <br>
           "Your carbon footprint score represents the environmental impact of your energy consumption per year (based on your average consumption per day). It reflects the carbon emissions associated with your household activities involving electricity and gas use."
         </mat-card-content>
@@ -33,7 +33,11 @@
        <br>
        <h2 style="color: #649a68;"> {{this.message}} </h2>
 
-       <a routerLink="/recommend" style=" cursor: pointer; font-weight: bold;
+       <a routerLink="/recommend" *ngIf="reccomend" style=" cursor: pointer; font-weight: bold;
+
+        color: #096342;">{{this.message2}} </a>
+
+       <a routerLink="/solution" *ngIf="reccomend2" style=" cursor: pointer; font-weight: bold;
 
         color: #096342;">{{this.message2}} </a>
 

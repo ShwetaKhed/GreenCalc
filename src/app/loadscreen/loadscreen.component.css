@@ -1,0 +1,41 @@
+
+p {
+  font-family: "Lato", sans-serif;
+  text-align: justify;
+}
+
+
+mat-card-subtitle {
+  font-size: 18px;
+}
+
+mat-card-title {
+  color: green;
+  font-size: 55px;
+  justify-content: center;
+  display: flex;
+}
+
+.column {
+    float: left;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .column {
+    float: left;
+  }
+
+  .centered-heading {
+    text-align: center;
+  }
+
+  .blue-heading {
+    color: green;
+    font-weight: bold;
+  }
