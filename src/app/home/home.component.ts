@@ -16,7 +16,7 @@ export class HomeComponent {
 
     console.log("in here")
     this.http.get<any>(
-      "https://test-cui4.onrender.com/8080/api/data"
+      "http://localhost:3000/api/data"
     )
     .subscribe(responseData => {
      console.log(responseData)
