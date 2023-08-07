@@ -34,6 +34,7 @@ app.get('/api/data', async (req, res) => {
     console.log(data);
     timeout();
     console.log(JSON.stringify(data, null, 2));
+    res.sendStatus(200)
     res.json(data);
   } catch (error) {
     // Handle errors here if necessary

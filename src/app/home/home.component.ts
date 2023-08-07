@@ -10,14 +10,13 @@ import { SharedService } from '../shared.service';
 })
 
 export class HomeComponent {
-  private apiUrl = 'http://localhost:3000/api';
   constructor(private router: Router, private http: HttpClient,
     private sharedService: SharedService) { }
   ngOnInit() {
 
     console.log("in here")
     this.http.get<any>(
-      "http://localhost:3000/api/data"
+      "https://test-cui4.onrender.com/8080/api/data"
     )
     .subscribe(responseData => {
      console.log(responseData)
