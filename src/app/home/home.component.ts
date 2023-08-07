@@ -13,8 +13,6 @@ export class HomeComponent {
   constructor(private router: Router, private http: HttpClient,
     private sharedService: SharedService) { }
   ngOnInit() {
-
-    console.log("in here")
     this.http.get<any>(
       "http://localhost:3000/api/data"
     )

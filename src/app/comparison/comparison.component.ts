@@ -12,15 +12,17 @@ export class ComparisonComponent {
   message: any;
   message2: any;
   message3:any;
+  suburbScore:any;
   reccomend:Boolean = false;
   reccomend2:Boolean = false;
   constructor(private route: ActivatedRoute, private sharedService: SharedService) {}
 
   ngOnInit() {
-   this.carbonFootprint = this.route.snapshot.paramMap.get('data') + "kg CO2" ?? '';;
+   this.carbonFootprint = this.route.snapshot.paramMap.get('data') + "kg CO2" ?? '';
    for (const value of this.sharedService.sharedData) {
     if (this.sharedService.postcode == value.postcode){
-      let suburb_score = value.gas_emissions + value.electricity_emissions;
+      let suburb_score = value.gas_emissions * 30 + value.electricity_emissions * 30;
+      this.suburbScore = suburb_score
       if (Number(this.route.snapshot.paramMap.get('data')) > suburb_score)
       {
         this.score = "higher"
@@ -31,7 +33,7 @@ export class ComparisonComponent {
       {
         this.score = "lower"
         this.message = "Your household carbon footprint is lower than your suburb’s average, keep up the good work!"
-        this.message2 = "You can maintain or improve it further by incorporating the following suggestions - > "
+        this.message2 = "You can maintain/ improve it further by incorporating the following suggestions - > "
         this.reccomend2 = true;
       }
     }

@@ -11,7 +11,6 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatCardModule } from "@angular/material/card";
 import {MatButtonModule} from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -25,13 +24,10 @@ import {VgBufferingModule} from '@videogular/ngx-videogular/buffering';
 import {MatSelectModule} from '@angular/material/select';
 import { ComparisonComponent } from './comparison/comparison.component';
 import { NumbersOnlyDirective } from './numbers-only.directive';
-import { BarChartComponent } from './bar-chart/bar-chart.component';
-import {MatTreeFlatDataSource, MatTreeFlattener, MatTreeModule} from '@angular/material/tree';
 import { RecommendComponent } from './recommend/recommend.component';
 import { LoadscreenComponent } from './loadscreen/loadscreen.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
-
+import { BillComponentComponent } from './bill-component/bill-component.component';
 
 
 @NgModule({
@@ -39,14 +35,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AppComponent,
     HomeComponent,
     NavBarComponent,
-    FooterComponent,
     CalculatorComponent,
     SolutionsComponent,
     ComparisonComponent,
     NumbersOnlyDirective,
-    BarChartComponent,
     RecommendComponent,
-    LoadscreenComponent
+    LoadscreenComponent,
+    BillComponentComponent
 
   ],
   imports: [
@@ -69,7 +64,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     VgOverlayPlayModule,
     VgBufferingModule,
     MatSelectModule,
-    MatTreeModule,
     MatSnackBarModule
   ],
   providers: [],

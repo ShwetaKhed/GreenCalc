@@ -6,12 +6,14 @@
 
 .bg-img {
   background-image: url("/assets/images/planting_trees.jpg");
-  filter: blur(4px);
-  -webkit-filter: blur(6px);
+  filter: blur(0px);
+  -webkit-filter: blur(0px);
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
   position: relative;
+
 }
 
 .bg-text {
