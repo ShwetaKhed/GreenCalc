@@ -9,103 +9,45 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
+<body>
+
 <nav-bar></nav-bar>
-<body >
-  <div class="bg-img">
 
-  </div>
-  <div class="bg-text">
-    <mat-card style="margin:30px">
-  <div class="container">
-    <div style="margin:30px 0px 0px 60px;">
-
-        <mat-card-header>
-          <mat-card-title>Map and Guidelines</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-        <p> *** Follow the below steps to find out more.</p>
-         <h2 style="margin-top:20px">1. Calculate</h2>
-         <p>Enter your details like suburb, energy and gas consumption to calculate your carbon
-          footprint </p>
-        <h2>2. Compare</h2>
-        <p>Compare your carbon footprint to your respective suburb</p>
-        <h2>3. Recommendations</h2>
-        <p>Get recommendations to reduce your carbon footprint</p>
-
-        </mat-card-content>
+<div class="container" style="margin-top:30px; height: 82%;">
+  <div class="row">
+    <div class="col-sm-6">
+      <img style="height: 350px; margin-left: 120px;"  src="/assets/images/homepage.jpg"/>
 
 
     </div>
-    <div style="margin:10px; height: 450px;">
-        <mat-card-header>
-          <mat-card-title style="margin-top:20px; margin-left: 20px;">Find your Carbon Footprint</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <div class="container">
-            <div style="margin:0px;width: 42%; height: 330px;">
-              <form #myForm="ngForm" autocomplete="off" novalidate fxLayout="column wrap"
-              fxLayoutAlign="center center" fxLayoutGap="10px" (ngSubmit)="calculate()">
-              <mat-card-content>
-                <mat-form-field>
-                  <mat-label>Select a Suburb PostCode</mat-label>
-                  <mat-select required="true" [(ngModel)]="postcode" id="postcode" name="postcode">
-                    <mat-option value="3156">3156</mat-option>
-                    <mat-option value="3802">3802</mat-option>
-                    <mat-option value="3803">3803</mat-option>
-                    <mat-option value="3805">3805</mat-option>
-                    <mat-option value="3807">3807</mat-option>
-                    <mat-option value="3912">3912</mat-option>
-                    <mat-option value="3978">3978</mat-option>
-                    <mat-option value="3177">3177</mat-option>
-                    <mat-option value="3804">3804</mat-option>
-                    <mat-option value="3806">3806</mat-option>
-                    <mat-option value="3975">3975</mat-option>
-                    <mat-option value="3976">3976</mat-option>
-                    <mat-option value="3977">3977</mat-option>
-                  </mat-select>
-                  <mat-hint>Suburb PostCode in Victoria</mat-hint>
-                </mat-form-field> <br><br>
-                <mat-form-field>
-                  <mat-label>Energy Consumption</mat-label>
-                  <input matInput required="true"  required [(ngModel)]="energy" id="energy" name="energy" numbersOnly>
-                  <mat-hint>Energy Consumption in kWH</mat-hint>
-                </mat-form-field> <br><br>
+    <div class="col-sm-6">
+      <div class="container">
+        <div style="height: 220px; margin-left: 90px;" > </div>
 
-                <mat-form-field>
-                  <mat-label>Gas Consumption</mat-label>
-                  <input matInput required="true" required [(ngModel)]="gas" id="gas" name="gas" numbersOnly>
-                  <mat-hint>Gas Consumption in MJ</mat-hint>
-                </mat-form-field>
-                <mat-card-actions style="margin-left: 30px;">
-                  <button mat-button color="primary" type="submit"
-                                  mat-raised-button>
-                            Calculate Now
-                          </button>
+      </div>
+      <mat-card>
+        <div style="margin: 20px; align-items: center;">
+          <h2 style="color: rgb(112, 112, 132); text-align: center;">"Small steps toward reducing our carbon footprint
+            can lead to giant leaps for the future of our planet."<br></h2>
+          <h2 style="color: rgb(24, 24, 27); text-align: center;"> How do my energy bills compare?</h2>
 
-                </mat-card-actions>
-
-              </mat-card-content>
-        </form>
-              </div>
-          <div style="margin-top: 120px; margin-left: 45px;">
-            <a routerLink="/billComp/elec" style=" cursor: pointer; font-weight: bold;
-            color: #096342;">Find how you can get Energy Consumption from your Electricity Bill -> </a>
-            <br>
-            &nbsp;
-            <br>
-        <a routerLink="/billComp/gas" style=" cursor: pointer; font-weight: bold;
-
-        color: #096342;">Find how you can get Gas Consumption from your  <br> Gas Bill -> </a>
-
+         <a routerLink="/calc" mat-button style=" cursor: pointer;  background-color: #202120;
+         color: #e7eae9; margin-left: 128px;">Calculate Carbon Footprint -> </a>
         </div>
-          </div>
-        </mat-card-content>
-
+      </mat-card>
     </div>
-  </div>
-</mat-card>
-</div>
 
+
+  </div>
+
+</div>
+<div style="background-color: #333;
+color: white;
+text-align: center;
+padding: 10px;
+position: absolute;
+bottom: 0;
+width: 100%;"> <p>GreenCalc by TA04</p></div>
 
 </body>
 </html>
