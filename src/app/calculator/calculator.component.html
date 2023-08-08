@@ -15,26 +15,93 @@
 
 <div class="container" style="margin-top:30px; height: 82%;">
   <div class="row">
-    <div class="col-sm-6">
-      <img style="height: 350px; margin-left: 120px;"  src="/assets/images/homepage.jpg"/>
+    <div class="col-sm-5">
+      <img style="height: 350px; margin-left: 100px;"  src="/assets/images/calculator.jpg"/>
 
 
     </div>
     <div class="col-sm-6">
       <div class="container">
-        <div style="height: 220px; margin-left: 90px;" > </div>
+
 
       </div>
-      <mat-card>
-        <div style="margin: 20px; align-items: center;">
-          <h2 style="color: rgb(112, 112, 132); text-align: center;">"Small steps toward reducing our carbon footprint
-            can lead to giant leaps for the future of our planet."<br></h2>
-          <h2 style="color: rgb(24, 24, 27); text-align: center;"> How do my energy bills compare?</h2>
+      <mat-card style="margin: 50px 10px 10px 10px; width: 650px;">
+        <mat-card-content>
+          <div class="container">
+            <div style="margin:0px;width: 50%; height: 330px;">
+              <h2 style="color: rgb(112, 112, 132); ">
+                How to use the calculator?
+                <br></h2>
+                <h3 style="color: rgb(112, 112, 132); ">
+                 1. Select your Suburb
+                  <br></h3>
+                  <h3 style="color: rgb(112, 112, 132); ">
+                    2. Enter your energy consumption in kWH
+                    <a routerLink="/billComp/elec" style=" cursor: pointer; font-weight: bold;
+                    color: #096342;">Click here to find how you can get Energy Consumption from your Electricity Bill -> </a>
+                   </h3>
 
-         <a routerLink="/calc" mat-button style=" cursor: pointer;  background-color: #202120;
-         color: #e7eae9; margin-left: 128px;">Calculate Carbon Footprint -> </a>
-        </div>
+
+                  <h3 style="color: rgb(112, 112, 132); ">  <br>
+                    3. Enter your gas consumption in MJ
+                   <br>
+                   <a routerLink="/billComp/gas" style=" cursor: pointer; font-weight: bold;
+                   color: #096342;">Click here to find how you can get Gas Consumption from your Gas Bill -> </a>
+                  </h3>
+
+
+            </div>
+            <div style="margin:10px;width: 50%; height: 330px;">
+              <form #myForm="ngForm" autocomplete="off" novalidate fxLayout="column wrap"
+              fxLayoutAlign="center center" fxLayoutGap="10px" (ngSubmit)="calculate()">
+              <mat-card-content>
+                <mat-form-field>
+                  <mat-label>Select a Suburb</mat-label>
+                  <mat-select required="true" [(ngModel)]="postcode" id="postcode" name="postcode">
+                    <mat-option value="3156">3156 - Lysterfield South</mat-option>
+                    <mat-option value="3802">3802 - Endeavour Hills</mat-option>
+                    <mat-option value="3803">3803 - Hallam</mat-option>
+                    <mat-option value="3805">3805 - Narre Warren and Narre Warren South</mat-option>
+                    <mat-option value="3807">3807 - Beaconsfield</mat-option>
+                    <mat-option value="3912">3912 - Pearcedale</mat-option>
+                    <mat-option value="3978">3978 - Clyde and Clyde North</mat-option>
+                    <mat-option value="3177">3177 - Doveton and Eumemmerring</mat-option>
+                    <mat-option value="3804">3804 - Narre Warren North</mat-option>
+                    <mat-option value="3806">3806 - Berwick and Harkaway</mat-option>
+                    <mat-option value="3975">3975 - Lynbrook and Lyndhurst</mat-option>
+                    <mat-option value="3976">3976 - Hampton Park</mat-option>
+                    <mat-option value="3977">3977 - Botanic Ridge</mat-option>
+                  </mat-select>
+                  <mat-hint>Suburb PostCode in Victoria</mat-hint>
+                </mat-form-field> <br><br>
+                <mat-form-field>
+                  <mat-label>Energy Consumption</mat-label>
+                  <input matInput required="true"  required [(ngModel)]="energy" id="energy" name="energy" numbersOnly>
+                  <mat-hint>Energy Consumption in kWH</mat-hint>
+                </mat-form-field> <br><br>
+
+                <mat-form-field>
+                  <mat-label>Gas Consumption</mat-label>
+                  <input matInput required="true" required [(ngModel)]="gas" id="gas" name="gas" numbersOnly>
+                  <mat-hint>Gas Consumption in MJ</mat-hint>
+                </mat-form-field>
+                <mat-card-actions>
+                  <a routerLink="/home" mat-button style=" cursor: pointer;  background-color: #202120;
+                  color: #e7eae9; ">Back</a>
+                  <button mat-button style="background-color: black; color: white; margin-left: 10px;" type="submit"
+                                  mat-raised-button>
+                            Calculate Now
+                          </button>
+                </mat-card-actions>
+
+
+              </mat-card-content>
+        </form>
+            </div>
+          </div>
+        </mat-card-content>
       </mat-card>
+
     </div>
 
 
