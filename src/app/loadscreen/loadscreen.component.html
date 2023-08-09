@@ -28,10 +28,10 @@
       <mat-card-actions style="margin: 50px;">
         <mat-form-field style = "margin-left: 45px;">
           <mat-label>Login Password</mat-label>
-          <input matInput required="true"  required [(ngModel)]="password" id="password" name="password" >
+          <input type = "password" matInput required="true"  required [(ngModel)]="password" id="password" name="password" >
           <mat-hint>** Team Name</mat-hint>
         </mat-form-field> <br>
-        <button style = "margin-left: 125px; margin-top: 20px;" mat-button color="primary" (click)="onLogin()"
+        <button style = "margin-left: 135px; margin-top: 20px; background-color: black; color: white; " mat-button  (click)="onLogin()"
                                   mat-raised-button>
                            Login Now
                           </button>

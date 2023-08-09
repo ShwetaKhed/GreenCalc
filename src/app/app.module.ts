@@ -28,6 +28,7 @@ import { RecommendComponent } from './recommend/recommend.component';
 import { LoadscreenComponent } from './loadscreen/loadscreen.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BillComponentComponent } from './bill-component/bill-component.component';
+import { BarchartComponent } from './barchart/barchart.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { BillComponentComponent } from './bill-component/bill-component.componen
     NumbersOnlyDirective,
     RecommendComponent,
     LoadscreenComponent,
-    BillComponentComponent
+    BillComponentComponent,
+    BarchartComponent
 
   ],
   imports: [

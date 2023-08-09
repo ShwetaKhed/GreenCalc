@@ -1,12 +1,23 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SharedService } from '../shared.service';
+import { BarModel } from '../Model/bar.model';
 @Component({
   selector: 'app-comparison',
   templateUrl: './comparison.component.html',
   styleUrls: ['./comparison.component.css']
 })
 export class ComparisonComponent {
+
+  public Animals: Array<BarModel> = [
+    {Value: 350, Color:'#498B94', Size:'', Legend:'Monkeys'},
+    {Value: 2000, Color:'#F8C622', Size:'', Legend:'Giraffes'},
+    {Value: 1000, Color:'#747474', Size:'', Legend:'Lions'},
+    {Value: 500, Color:'#EC972D', Size:'', Legend:'Tigers'},
+  ];
+  public Data: Array<BarModel> = [
+
+  ]
   carbonFootprint: string = '0';
   score: any;
   message: any;
@@ -16,6 +27,8 @@ export class ComparisonComponent {
   suburb: any;
   reccomend:Boolean = false;
   reccomend2:Boolean = false;
+
+
   constructor(private route: ActivatedRoute, private sharedService: SharedService) {}
 
   ngOnInit() {

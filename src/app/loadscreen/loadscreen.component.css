@@ -39,3 +39,7 @@ mat-card-title {
     color: green;
     font-weight: bold;
   }
+
+  .button .primary{
+    background-color: black;
+  }
